@@ -12,7 +12,7 @@
       debug:
         msg:
           - "hostname={{ hostname | default('UNSET') }}"
-          - "vcenter_destination_folder={{ vcenter_destination_folder | default('UNSET') }}"
+          - "folder={{ folder | default('UNSET') }}"
 
     - name: Gather virtual machines in folder
       community.vmware.vmware_vm_info:
