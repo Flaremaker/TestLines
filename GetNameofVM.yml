@@ -8,12 +8,6 @@
     ansible_python_interpreter: /usr/bin/python3
   tasks:
 
-    - name: Sanity check vars
-      debug:
-        msg:
-          - "hostname={{ hostname | default('UNSET') }}"
-          - "folder={{ folder | default('UNSET') }}"
-
     - name: Gather virtual machines in folder
       community.vmware.vmware_vm_info:
         hostname: "{{ hostname }}"
