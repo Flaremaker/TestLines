@@ -10,7 +10,7 @@
         hostname: "{{ VMWARE_HOSTNAME }}"
         username: "{{ VMWARE_USERNAME }}"
         password: "{{ VMWARE_PASSWORD }}"
-        validate_certs: no
+        validate_certs: false
         folder: "{{ VCENTER_DESTINATION_FOLDER }}"
       delegate_to: localhost
       register: vm_info
