@@ -1,4 +1,3 @@
-
 name: Run Ansible Playbook
 
 on:
@@ -16,8 +15,11 @@ jobs:
 
       - name: Set up Ansible
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ansible
+            sudo apt-get update
+            sudo apt-get install -y ansible python3-pip
+            pip3 install requests pyvmomi
+            ansible-galaxy collection install community.vmware
+
 
       - name: Run Ansible Playbook
         env:
@@ -27,5 +29,4 @@ jobs:
           FOLDER: ${{ secrets.VCENTER_FOLDER }}
         run: |
           ansible-playbook GetNameofVM.yml \
-            --extra-vars "hostname=$HOSTNAME username=$USERNAME password=$PASSWORD vcenter_destination_folder=$FOLDER"
-
+            --extra-vars "hostname=$HOSTNAME username=$USERNAME password=$PASSWORD folder=$FOLDER"
