@@ -7,11 +7,11 @@
   tasks:
     - name: Gather virtual machines in folder
       community.vmware.vmware_vm_info:
-        hostname: "{{ VMWARE_HOSTNAME }}"
-        username: "{{ VMWARE_USERNAME }}"
-        password: "{{ VMWARE_PASSWORD }}"
+        hostname: "{{ hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
         validate_certs: false
-        folder: "{{ VCENTER_DESTINATION_FOLDER }}"
+        folder: "{{ folder }}"
       delegate_to: localhost
       register: vm_info
 
