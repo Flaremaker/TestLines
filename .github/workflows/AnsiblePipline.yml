@@ -3,7 +3,10 @@ name: Run Ansible Playbook
 
 on:
   workflow_dispatch:
-
+  
+  push:
+    branches: [ "main" ]
+    
 jobs:
   run-ansible:
     runs-on: ubuntu-latest
