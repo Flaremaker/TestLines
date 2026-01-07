@@ -23,6 +23,6 @@ jobs:
           PASSWORD: ${{ secrets.VMWARE_PASSWORD }}
           VCENTER_DESTINATION_FOLDER: ${{ secrets.VCENTER_DESTINATION_FOLDER }}
         run: |
-          ansible-playbook playbook.yml \
+          ansible-playbook GetNameofVM.yml \
             --extra-vars "hostname=$HOSTNAME username=$USERNAME password=$PASSWORD vcenter_destination_folder=$VCENTER_DESTINATION_FOLDER"
 
