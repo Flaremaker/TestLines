@@ -19,6 +19,10 @@ jobs:
             sudo apt-get install -y ansible python3-pip
             pip3 install requests pyvmomi
             ansible-galaxy collection install community.vmware
+      
+      - name: Test DNS resolution
+        run: |
+            ping -c 3 ${{ secrets.VCENTER_HOST }} || echo "Cannot resolve host"
 
 
       - name: Run Ansible Playbook
