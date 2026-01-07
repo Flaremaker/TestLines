@@ -3,7 +3,10 @@ name: Run Ansible Playbook
 
 on:
   workflow_dispatch:
-
+  
+  push:
+    branches: [ "main" ]
+    
 jobs:
   run-ansible:
     runs-on: ubuntu-latest
@@ -18,11 +21,11 @@ jobs:
 
       - name: Run Ansible Playbook
         env:
-          HOSTNAME: ${{ secrets.VMWARE_HOSTNAME }}
-          USERNAME: ${{ secrets.VMWARE_USERNAME }}
-          PASSWORD: ${{ secrets.VMWARE_PASSWORD }}
-          VCENTER_DESTINATION_FOLDER: ${{ secrets.VCENTER_DESTINATION_FOLDER }}
+          HOSTNAME: ${{ secrets.hostname }}
+          USERNAME: ${{ secrets.username }}
+          PASSWORD: ${{ secrets.password }}
+          FOLDER: ${{ secrets.folder }}
         run: |
           ansible-playbook GetNameofVM.yml \
-            --extra-vars "hostname=$HOSTNAME username=$USERNAME password=$PASSWORD vcenter_destination_folder=$VCENTER_DESTINATION_FOLDER"
+            --extra-vars "hostname=$HOSTNAME username=$USERNAME password=$PASSWORD vcenter_destination_folder=$FOLDER"
 
