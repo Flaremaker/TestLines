@@ -23,10 +23,10 @@ jobs:
 
       - name: Run Ansible Playbook
         env:
-          export HOSTNAME: ${{ secrets.VCENTER_HOSTNAME }}
+          HOSTNAME: ${{ secrets.VCENTER_HOSTNAME }}
           USERNAME: ${{ secrets.VCENTER_USERNAME }}
           PASSWORD: ${{ secrets.VCENTER_PASSWORD }}
           FOLDER: ${{ secrets.VCENTER_FOLDER }}
         run: |
           ansible-playbook GetNameofVM.yml \
-            --extra-vars "hostname= $HOSTNAME username=$USERNAME password=$PASSWORD folder=$FOLDER"
+            --extra-vars "hostname=$HOSTNAME username=$USERNAME password=$PASSWORD folder=$FOLDER"
