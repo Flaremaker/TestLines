@@ -12,13 +12,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
-      - name: Set up Ansible
-        run: |
-            sudo apt-get update
-            sudo apt-get install -y ansible python3-pip
-            pip3 install requests pyvmomi
-            ansible-galaxy collection install community.vmware
       
       - name: Test DNS resolution
         run: |
